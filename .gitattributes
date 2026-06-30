@@ -1,5 +1,17 @@
-# PxPlus-bestanden zijn getokeniseerd/binair — Git mag ze NOOIT als tekst zien
-# (anders verbouwt autocrlf de line-endings -> corruptie + constante 'gewijzigd'-flikker)
+# .gitattributes — vertelt Git HOE het bepaalde bestanden moet behandelen.
+#
+# WAAROM dit bestand bestaat:
+# PxPlus-bestanden (.pvc, .en, .bst, providex.*, en de *_prog programma's) zijn
+# GETOKENISEERD/BINAIR, geen tekst. Git denkt standaard dat alles tekst is en past
+# op Windows (core.autocrlf) automatisch de regeleindes aan (CRLF <-> LF). Bij een
+# binair bestand is dat geen "verbetering" maar CORRUPTIE -- en Git bleef ze ook
+# constant als 'gewijzigd' zien terwijl er niks veranderde.
+#
+# 'binary' = handen af: geen regeleindes aanpassen, niet als tekst diffen, ruwe bytes.
+# Voordeel boven core.autocrlf: dit REIST MEE in de repo, dus geldt op elke clone/machine.
+#
+# LET OP: dit lost de regeleinde-kant op, NIET de Windows file-locks van een
+# DRAAIENDE PxPlus-sessie -> sluit PxPlus altijd VOOR git-werk.
 *.en     binary
 *.bst    binary
 *.pvc    binary
