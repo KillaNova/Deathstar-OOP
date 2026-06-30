@@ -1,0 +1,18 @@
+# PxPlus-bestanden zijn getokeniseerd/binair — Git mag ze NOOIT als tekst zien
+# (anders verbouwt autocrlf de line-endings -> corruptie + constante 'gewijzigd'-flikker)
+*.en     binary
+*.bst    binary
+*.pvc    binary
+*.dcl    binary
+*.dde    binary
+*.ddf    binary
+*.ude    binary
+*.udf    binary
+
+# Programmabestanden zonder extensie (ook getokeniseerd):
+compare_prog       binary
+film_list_prog     binary
+main_menu          binary
+main_menu_prog     binary
+sales_form_prog    binary
+sales_prog         binary
